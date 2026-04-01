@@ -25,3 +25,8 @@ Le operazioni eseguite in sequenza sono:
 ```bash
 chmod +x setup_server.sh
 sudo ./setup_server.sh
+```
+## Risultato finale:
+
+<img width="808" height="692" alt="Setup_User_Ubuntu_Server" src="https://github.com/user-attachments/assets/280fb57f-4637-4349-b4bf-3e9a784c63ec" />
+
