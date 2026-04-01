@@ -1,0 +1,35 @@
+#!/bin/bash
+
+echo "Inizio configurazione del server..."
+
+echo "Aggiornamento dei pacchetti..."
+apt update && apt upgrade -y
+
+echo "Creazione del nuovo utente admin_luca..."
+useradd -m -s /bin/bash admin_luca
+usermod -aG sudo admin_luca
+
+echo "Configurazione delle chiavi SSH per il nuovo utente..."
+mkdir -p /home/admin_luca/.ssh
+
+echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHKZusJc3+a8lljLgVChbkPpztZOL2CEGnXUUml5eBkl william.crowther2005@gmail.com" > /home/admin_luca/.ssh/authorized_keys
+
+chown -R admin_luca:admin_luca /home/admin_luca/.ssh
+chmod 700 /home/admin_luca/.ssh
+chmod 600 /home/admin_luca/.ssh/authorized_keys
+
+
+echo "Messa in sicurezza del servizio SSH..."
+sed -i 's/^#*PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
+systemctl restart ssh
+
+echo "Configurazione del Firewall..."
+ufw allow OpenSSH
+ufw allow 80/tcp
+ufw allow 443/tcp
+ufw --force enable
+
+echo "Installazione strumenti base..."
+apt install -y htop curl git vim
+
+echo "Configurazione completata con successo! Benvenuto nel mondo dei SysAdmin."
