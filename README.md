@@ -1,5 +1,3 @@
-# Ubuntu_Bootstrap_Script
-
 # Ubuntu Server Bootstrap & Hardening Script
 
 Questo repository contiene il mio primo progetto pratico da aspirante sistemista. Ho sviluppato questo script Bash per automatizzare la configurazione iniziale e l'hardening di una macchina Ubuntu Server, riducendo gli errori umani legati al setup manuale.
